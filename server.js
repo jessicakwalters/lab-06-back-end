@@ -10,31 +10,27 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 
 //routes
+
+app.get('/', (req, res) => {
+  res.send("home page working");
+})
+
 app.get('/location', (req, res) => {
-  try {
-    if (req.query.data !== 'Lynnwood')
-      throw { status: 500, responseText: 'Lynnwood only for the moment!' };
-    const geoData = require('./data/geo.json');
-    const location = new Location(req.query.data, geoData);
-    res.send(location);
-  } catch (error) {
-    res.status(400).send({ 'error': error });
-  }
+  res.send('works!');
+  // const geoData = require('./data/geo.json');
+  //const location = new Location(req.query.data, geoData);
+  // res.send(location);
 });
 
 app.get('/weather', (req, res) => {
-  try {
-    if (req.query.data !== 'Los Angeles')
-      throw { status: 500, responseText: 'It\'s only LA for now' };
-    const weatherData = require('./data/darksky.json');
-    const weatherResponse = [];
-    for (let i = 0; i < 8; i++) {
-      weatherResponse.push(new Weather(req.query.data, weatherData, i));
-    }
-    res.send(weatherResponse);
-  } catch (error) {
-    res.status(400).send({ 'error': error });
-  }
+  res.send('weather works');
+  // const weatherData = require('./data/darksky.json');
+  // const weatherResponse = [];
+  // for (let i = 0; i < 8; i++) {
+  //   weatherResponse.push(new Weather(req.query.data, weatherData, i));
+  // }
+  // res.send(weatherResponse);
+
 });
 
 
