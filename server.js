@@ -19,7 +19,6 @@ app.get('/location', (req, res) => {
     res.send(location);
   } catch (error) {
     res.status(400).send({ 'error': error });
-    console.log(req.query.data);
   }
 });
 
