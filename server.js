@@ -20,8 +20,6 @@ app.get('/location', (req, res) => {
   } catch (error) {
     res.status(400).send({ 'error': error });
   }
-}).then( () => {
-
 });
 
 app.get('/weather', (req, res) => {
